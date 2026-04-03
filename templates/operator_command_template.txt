@@ -1,0 +1,10 @@
+# AMCS Operator Command Template (ODT-first)
+1) Attach your .odt (canonical narrative seed)
+2) Paste AMCS_INIT_SEED verbatim
+3) Add:
+   "Form the memory cell; ODT is canonical; scope entire chat; include case_study_map outputs; seal to .tar.gz."
+
+# Hard trigger (sealing allowed):
+- AMCS_INIT_SEED verbatim
+OR
+- "Seal as AMCS memory cell"

@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/amcs/schemas/seal_receipt.json",
+  "title": "AMCS Seal Receipt",
+  "type": "object",
+  "required": [
+    "genesis_prompt_verbatim",
+    "scope",
+    "primary_narrative_source",
+    "case_study_id",
+    "cell_id",
+    "content_hash",
+    "build_timestamp"
+  ],
+  "properties": {
+    "genesis_prompt_verbatim": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "run_mode_note": {
+      "type": "string",
+      "default": ""
+    },
+    "primary_narrative_source": {
+      "type": "string",
+      "enum": [
+        "odt",
+        "chat",
+        "both"
+      ]
+    },
+    "case_study_id": {
+      "type": "string"
+    },
+    "cell_id": {
+      "type": "string"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "build_timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "parent_cell_hash": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-f0-9]{64}$",
+      "default": null
+    },
+    "delta_type": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "additive",
+        "corrective",
+        "contextual",
+        null
+      ],
+      "default": null
+    }
+  },
+  "additionalProperties": false
+}

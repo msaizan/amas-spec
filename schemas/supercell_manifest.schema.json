@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/amcs/schemas/supercell_manifest.json",
+  "title": "AMCS Supercell Manifest",
+  "type": "object",
+  "required": [
+    "supercell_id",
+    "assembly_timestamp",
+    "assembly_reason",
+    "included_cell_hashes",
+    "assembly_scope",
+    "assembly_mode"
+  ],
+  "properties": {
+    "supercell_id": {
+      "type": "string"
+    },
+    "assembly_timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "assembly_reason": {
+      "type": "string"
+    },
+    "included_cell_hashes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "minItems": 1
+    },
+    "assembly_scope": {
+      "type": "string"
+    },
+    "assembly_mode": {
+      "type": "string",
+      "enum": [
+        "analysis",
+        "research",
+        "consolidation",
+        "planning"
+      ]
+    },
+    "notes": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "additionalProperties": false
+}

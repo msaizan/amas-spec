@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/amcs/schemas/cell_index.json",
+  "title": "AMCS Cell Index Record",
+  "type": "object",
+  "required": [
+    "cell_id",
+    "content_hash",
+    "created_at",
+    "domains",
+    "topics",
+    "entities",
+    "claims",
+    "evidence_types",
+    "case_study_id"
+  ],
+  "properties": {
+    "cell_id": {
+      "type": "string"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "domains": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "topics": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "entities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_types": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "parent_cell_hashes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "default": []
+    },
+    "delta_type": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "additive",
+        "corrective",
+        "contextual",
+        null
+      ],
+      "default": null
+    },
+    "case_study_id": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

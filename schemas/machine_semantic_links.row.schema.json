@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/amcs/schemas/semantic_links_row.json",
+  "title": "AMCS Machine Index: semantic_links.csv row (conceptual)",
+  "type": "object",
+  "required": [
+    "from_id",
+    "to_id",
+    "link_type",
+    "score",
+    "edge_epistemic_class"
+  ],
+  "properties": {
+    "from_id": {
+      "type": "string"
+    },
+    "to_id": {
+      "type": "string"
+    },
+    "link_type": {
+      "type": "string",
+      "enum": [
+        "semantic_similarity",
+        "topic_cluster",
+        "entity_cooccurrence",
+        "graph_motif",
+        "path_hint"
+      ]
+    },
+    "score": {
+      "type": "number",
+      "minimum": 0.0
+    },
+    "edge_epistemic_class": {
+      "type": "string",
+      "const": "analytical"
+    },
+    "derivation_method": {
+      "type": "string",
+      "default": ""
+    },
+    "source_matrix_rows": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "source_prompt_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "source_response_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    }
+  },
+  "additionalProperties": false
+}

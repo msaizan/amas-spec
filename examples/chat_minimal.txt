@@ -1,0 +1,7 @@
+USER: Summarize the design constraints for Mojave unit cooling.
+
+ASSISTANT: Constraints: maintain magnet temperature, isolate coils, ensure airflow across levitation rings, etc.
+
+USER: Now store this as a memory cell.
+
+ASSISTANT: Acknowledged. Sealing... (example)

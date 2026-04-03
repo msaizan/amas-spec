@@ -1,0 +1,34 @@
+{
+  "_description": "AMAS Conflict Resolution Example: Same-Tier Conflict (Rules 2-5)",
+  "_scenario": "Two Tier 2 (SESSION) sources provide contradictory information. The user uploads a document stating a budget of $50,000, then later states in conversation that the budget is $75,000. Rules 2 and 3 resolve the conflict.",
+  "conflict": {
+    "object_a": {
+      "object_id": "MO-DOC-015",
+      "authority_tier": 2,
+      "content": "Project budget: $50,000. Approved by finance committee 2026-02-15.",
+      "source_id": "uploaded_budget_doc.pdf",
+      "created_at": "2026-03-10T09:00:00Z",
+      "scope": "session",
+      "mutable": false,
+      "inference_marker": false
+    },
+    "object_b": {
+      "object_id": "MO-USR-023",
+      "authority_tier": 2,
+      "content": "Actually the budget was revised to $75,000 last week.",
+      "source_id": "user_message_turn_8",
+      "created_at": "2026-03-15T10:30:00Z",
+      "scope": "session",
+      "mutable": false,
+      "inference_marker": false,
+      "supersedes": "MO-DOC-015"
+    }
+  },
+  "resolution": {
+    "rule_applied": "Rule 2 — Explicit Supersession",
+    "prevailing_object": "MO-USR-023",
+    "reasoning": "Both objects are Tier 2, so Rule 1 does not resolve. MO-USR-023 explicitly supersedes MO-DOC-015 (the supersedes field is set). The user has authority at Tier 2 to supersede other Tier 2 content. The supersession chain is traceable. If the supersedes field were absent, Rule 3 (recency) would also favor MO-USR-023 as the more recent source.",
+    "action": "Use $75,000 as the operative budget figure. Retain MO-DOC-015 in the record with a note that it was superseded. The supersession is logged for audit."
+  },
+  "_fallback_note": "If neither object had a supersedes field and both had identical timestamps, Rule 4 (specificity) would apply — the more specific claim ('revised to $75,000 last week') would prevail over the general document. If still unresolved, Rule 5 (conservative default) would flag the conflict for operator resolution."
+}

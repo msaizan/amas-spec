@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/amcs/schemas/prompt_response_map.json",
+  "title": "AMCS Prompt\u2013Response Map",
+  "type": "object",
+  "required": [
+    "mappings"
+  ],
+  "properties": {
+    "mappings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "response_id",
+          "responds_to_prompt_ids",
+          "response_text_hash"
+        ],
+        "properties": {
+          "response_id": {
+            "type": "string"
+          },
+          "responds_to_prompt_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "response_text_hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "response_scope_note": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

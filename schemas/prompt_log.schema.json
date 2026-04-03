@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/amcs/schemas/prompt_log.json",
+  "title": "AMCS Prompt Log",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "prompt_id",
+      "role",
+      "chat_index",
+      "message_text",
+      "message_hash"
+    ],
+    "properties": {
+      "prompt_id": {
+        "type": "string"
+      },
+      "role": {
+        "type": "string",
+        "enum": [
+          "user",
+          "assistant"
+        ]
+      },
+      "timestamp": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "format": "date-time"
+      },
+      "chat_index": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "message_text": {
+        "type": "string"
+      },
+      "message_hash": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "scope_tag": {
+        "type": "string",
+        "default": "entire_chat"
+      }
+    },
+    "additionalProperties": false
+  }
+}

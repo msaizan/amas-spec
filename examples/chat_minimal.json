@@ -1,0 +1,21 @@
+[
+  {
+    "role": "user",
+    "timestamp": "2026-01-10T07:00:00-06:00",
+    "content": "Summarize the design constraints for Mojave unit cooling.",
+    "attachments": []
+  },
+  {
+    "role": "assistant",
+    "timestamp": "2026-01-10T07:00:10-06:00",
+    "content": "Constraints: maintain magnet temperature, isolate coils, ensure airflow across levitation rings, etc."
+  },
+  {
+    "role": "user",
+    "content": "Now store this as a memory cell."
+  },
+  {
+    "role": "assistant",
+    "content": "Acknowledged. Sealing... (example)"
+  }
+]

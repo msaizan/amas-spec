@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/amcs/schemas/case_study_map.json",
+  "title": "AMCS Case Study Map (Nodes+Edges)",
+  "type": "object",
+  "required": [
+    "nodes",
+    "edges"
+  ],
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "node_id",
+          "node_type",
+          "label"
+        ],
+        "properties": {
+          "node_id": {
+            "type": "string"
+          },
+          "node_type": {
+            "type": "string",
+            "enum": [
+              "case_file",
+              "evidence_item",
+              "actor",
+              "claim",
+              "event"
+            ]
+          },
+          "label": {
+            "type": "string"
+          },
+          "source_prompt_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "default": []
+          },
+          "source_response_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "default": []
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "edge_id",
+          "from_node_id",
+          "to_node_id",
+          "edge_type",
+          "edge_epistemic_class"
+        ],
+        "properties": {
+          "edge_id": {
+            "type": "string"
+          },
+          "from_node_id": {
+            "type": "string"
+          },
+          "to_node_id": {
+            "type": "string"
+          },
+          "edge_type": {
+            "type": "string",
+            "enum": [
+              "references",
+              "supports",
+              "contradicts",
+              "responds_to",
+              "same_actor",
+              "same_platform",
+              "same_frame",
+              "timeline_adjacent",
+              "evidence_anchor"
+            ]
+          },
+          "edge_epistemic_class": {
+            "type": "string",
+            "enum": [
+              "observational",
+              "relational",
+              "interpretive",
+              "analytical"
+            ]
+          },
+          "source_prompt_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "default": []
+          },
+          "source_response_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "default": []
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

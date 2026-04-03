@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/amas/schemas/memory_object.json",
+  "title": "AMAS Memory Object",
+  "description": "The fundamental unit of authority in AMAS. See SPEC.md Section 4.",
+  "type": "object",
+  "required": [
+    "object_id",
+    "authority_tier",
+    "content",
+    "source_id",
+    "created_at",
+    "scope",
+    "mutable",
+    "inference_marker"
+  ],
+  "properties": {
+    "object_id": {
+      "type": "string",
+      "description": "Unique identifier within the system"
+    },
+    "authority_tier": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3,
+      "description": "0=CANONICAL, 1=OPERATOR, 2=SESSION, 3=INFERRED"
+    },
+    "content": {
+      "type": "string",
+      "description": "The substantive content of the memory"
+    },
+    "source_id": {
+      "type": "string",
+      "description": "Identifier of the originating source"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 creation timestamp"
+    },
+    "scope": {
+      "type": "string",
+      "description": "Applicability scope (global, session, cell, etc.)"
+    },
+    "mutable": {
+      "type": "boolean",
+      "description": "Whether this object can be modified after creation"
+    },
+    "inference_marker": {
+      "type": "boolean",
+      "description": "True if this is Tier 3 inferred content. MUST be true when authority_tier=3."
+    },
+    "confidence": {
+      "type": ["number", "null"],
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "default": null,
+      "description": "Confidence level. Not a calibrated probability unless documented as such."
+    },
+    "expires_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "default": null,
+      "description": "Expiration time after which the object loses authority"
+    },
+    "escalated_from": {
+      "type": ["integer", "null"],
+      "minimum": 0,
+      "maximum": 3,
+      "default": null,
+      "description": "Original tier if this object was promoted via authority escalation"
+    },
+    "escalated_by": {
+      "type": ["string", "null"],
+      "default": null,
+      "description": "Identity of the agent who performed the escalation"
+    },
+    "supersedes": {
+      "type": ["string", "null"],
+      "default": null,
+      "description": "object_id of the Memory Object this replaces (Rule 2 explicit supersession)"
+    },
+    "provenance": {
+      "type": ["object", "null"],
+      "default": null,
+      "description": "Origin chain and audit trail",
+      "properties": {
+        "origin": {
+          "type": "string",
+          "description": "Original source identity"
+        },
+        "chain": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Ordered list of source versions or delegation steps"
+        }
+      }
+    },
+    "authn_context": {
+      "type": ["string", "null"],
+      "default": null,
+      "description": "Authentication context for verifying escalation authority"
+    }
+  },
+  "additionalProperties": false
+}
